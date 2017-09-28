@@ -3,6 +3,7 @@ public class Die{
 	private int numSides;
 	
 	public Die(int numSides = 6){
+		if (numSides < 4) numSides = 6;		//any value below 4 is reset to 6
 		this.numSides = numSides;
 	}
 	
