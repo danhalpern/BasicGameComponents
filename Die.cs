@@ -1,21 +1,26 @@
 public class Die{
 	private static Random rnd = new Random();
+	private int numSides;
 	
-	public static int RollDie(){
-		return rnd.Next(1,7);
+	public Die(int numSides = 6){
+		this.numSides = numSides;
 	}
 	
-	public static int[] RollDice(int numOfRolls){	//tallies numbers rolled and returns a 7-element array of results, ***element 0 remains unused***
-		int [] rollHistory = new int[7];
+	public int RollDie(){
+		return rnd.Next(1,this.numSides + 1);
+	}
+	
+	public int[] RollDice(int numOfRolls){	//tallies numbers rolled and returns array of results, ***element 0 remains unused***
+		int [] rollTally = new int[numSides + 1];
 		for (int i = 0; i < numOfRolls; i++){
-			rollHistory[rnd.Next(1,7)]++;
+			rollTally[rnd.Next(1,numSides + 1)]++;
 		}
-		return rollHistory;
+		return rollTally;
 	}
 	
-	public static int SumOfRolls(int numOfRolls){
+	public int SumOfRolls(int numOfRolls){
 		int sum = 0;
-		for(int i = 0; i< numOfRolls; i++) sum+= rnd.Next(1,7);
+		for(int i = 0; i< numOfRolls; i++) sum+= rnd.Next(1,numSides + 1);
 		return sum;
 	}
 }
